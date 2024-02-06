@@ -1,0 +1,7 @@
+
+
+body{
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: hidden;
+    background-color: whitesmoke;
+}
