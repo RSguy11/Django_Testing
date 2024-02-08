@@ -12,15 +12,14 @@ def adv(request):
     return render(request, "AdvancedPage.html")
 
 def process_number(request):
+    if request.method == 'POST':
+        data = json.loads(request.body.decode('utf-8'))
+        number = data.get('number')
+        
+        result = is_even(int(number))
+        print("test Result", result)
 
-    data = json.loads(request.body.decode('utf-8'))
-    number = data.get('number')
-    result = is_even(int(number))
-    print(result)
-    return JsonResponse({'result':result})
-
-    if request.method == 'POST' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        print("why")
-      
+        return JsonResponse({'result':result})
+    
     print("error")
     return JsonResponse({'error' : 'Invalid method or not an AJAX request'})
